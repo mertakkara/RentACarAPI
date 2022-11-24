@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "v2niJOZBcFhS8SH1Igm5xYqwZc/jCdckIKaVDLggT1o=",
+  "Source": "RentACarAPI.API",
+  "BasePath": "_content/RentACarAPI.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "RentACarAPI.API\\wwwroot",
+      "Source": "RentACarAPI.API",
+      "ContentRoot": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Presentation\\RentACarAPI.API\\wwwroot\\",
+      "BasePath": "_content/RentACarAPI.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

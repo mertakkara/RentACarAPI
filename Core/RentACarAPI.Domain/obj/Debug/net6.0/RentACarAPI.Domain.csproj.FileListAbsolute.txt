@@ -1,0 +1,12 @@
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\bin\Debug\net6.0\RentACarAPI.Domain.deps.json
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\bin\Debug\net6.0\RentACarAPI.Domain.dll
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\bin\Debug\net6.0\RentACarAPI.Domain.pdb
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\obj\Debug\net6.0\RentACarAPI.Domain.csproj.AssemblyReference.cache
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\obj\Debug\net6.0\RentACarAPI.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\obj\Debug\net6.0\RentACarAPI.Domain.AssemblyInfoInputs.cache
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\obj\Debug\net6.0\RentACarAPI.Domain.AssemblyInfo.cs
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\obj\Debug\net6.0\RentACarAPI.Domain.csproj.CoreCompileInputs.cache
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\obj\Debug\net6.0\RentACarAPI.Domain.dll
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\obj\Debug\net6.0\refint\RentACarAPI.Domain.dll
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\obj\Debug\net6.0\RentACarAPI.Domain.pdb
+D:\Users\merta\source\repos\RentACarAPI\Core\RentACarAPI.Domain\obj\Debug\net6.0\ref\RentACarAPI.Domain.dll

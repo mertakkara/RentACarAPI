@@ -1,0 +1,382 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Presentation\\RentACarAPI.API\\RentACarAPI.API.csproj": {}
+  },
+  "projects": {
+    "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj",
+        "projectName": "RentACarAPI.Application",
+        "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj",
+        "packagesPath": "C:\\Users\\merta\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\merta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Domain\\RentACarAPI.Domain.csproj": {
+                "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Domain\\RentACarAPI.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Domain\\RentACarAPI.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Domain\\RentACarAPI.Domain.csproj",
+        "projectName": "RentACarAPI.Domain",
+        "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Domain\\RentACarAPI.Domain.csproj",
+        "packagesPath": "C:\\Users\\merta\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\merta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Infrastructure\\RentACarAPI.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Infrastructure\\RentACarAPI.Infrastructure.csproj",
+        "projectName": "RentACarAPI.Infrastructure",
+        "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Infrastructure\\RentACarAPI.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\merta\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\merta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj": {
+                "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Hosting": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Persistence\\RentACarAPI.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Persistence\\RentACarAPI.Persistence.csproj",
+        "projectName": "RentACarAPI.Persistence",
+        "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Persistence\\RentACarAPI.Persistence.csproj",
+        "packagesPath": "C:\\Users\\merta\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Persistence\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\merta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj": {
+                "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Presentation\\RentACarAPI.API\\RentACarAPI.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Presentation\\RentACarAPI.API\\RentACarAPI.API.csproj",
+        "projectName": "RentACarAPI.API",
+        "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Presentation\\RentACarAPI.API\\RentACarAPI.API.csproj",
+        "packagesPath": "C:\\Users\\merta\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Presentation\\RentACarAPI.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\merta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj": {
+                "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj"
+              },
+              "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Infrastructure\\RentACarAPI.Infrastructure.csproj": {
+                "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Infrastructure\\RentACarAPI.Infrastructure.csproj"
+              },
+              "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Persistence\\RentACarAPI.Persistence.csproj": {
+                "projectPath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Persistence\\RentACarAPI.Persistence.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.2.2, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

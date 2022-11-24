@@ -1,0 +1,17 @@
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\bin\Debug\net6.0\RentACarAPI.Infrastructure.deps.json
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\bin\Debug\net6.0\RentACarAPI.Infrastructure.dll
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\bin\Debug\net6.0\RentACarAPI.Infrastructure.pdb
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\bin\Debug\net6.0\RentACarAPI.Application.dll
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\bin\Debug\net6.0\RentACarAPI.Domain.dll
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\bin\Debug\net6.0\RentACarAPI.Application.pdb
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\bin\Debug\net6.0\RentACarAPI.Domain.pdb
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\RentACarAPI.Infrastructure.csproj.AssemblyReference.cache
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\RentACarAPI.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\RentACarAPI.Infrastructure.AssemblyInfoInputs.cache
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\RentACarAPI.Infrastructure.AssemblyInfo.cs
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\RentACarAPI.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\RentACarAPI.Infrastructure.csproj.CopyComplete
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\RentACarAPI.Infrastructure.dll
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\refint\RentACarAPI.Infrastructure.dll
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\RentACarAPI.Infrastructure.pdb
+D:\Users\merta\source\repos\RentACarAPI\Infrastucture\RentACarAPI.Infrastructure\obj\Debug\net6.0\ref\RentACarAPI.Infrastructure.dll
