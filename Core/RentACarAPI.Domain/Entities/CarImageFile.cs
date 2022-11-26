@@ -8,6 +8,6 @@ namespace RentACarAPI.Domain.Entities
 {
     public class CarImageFile: File
     {
-
+        public ICollection<Car> Cars { get; set; }
     }
 }

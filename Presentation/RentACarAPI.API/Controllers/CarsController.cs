@@ -110,36 +110,59 @@ namespace RentACarAPI.API.Controllers
             return Ok();
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload()
+        public async Task<IActionResult> Upload(string id)
         {
+            List<(string fileName,string pathOrContainerName)> result = await _storageService.UploadAsync("photo-images", Request.Form.Files);
 
-            var datas =await _storageService.UploadAsync("files", Request.Form.Files);
+            Car car = await  _carReadService.GetByIdAsync(id);
 
+            //foreach (var item in result)
+            //{
+            //    car.CarImageFiles.Add(new(){
+            //        FileName = r.fileName,
+            //        Path = r.pathOrContainerName,
+            //        Storage = _storageService.StorageName,
+            //        Cars = new List<Car>() { car }
+            //    });
+            //}
 
-            //var datas = await _fileService.UploadAsync("resource/car-images", Request.Form.Files);
-
-            await _carWriteRepository.AddRangeAsync(datas.Select(d => new CarImageFile()
+            await _carWriteRepository.AddRangeAsync(result.Select(r =>new CarImageFile
             {
-                FileName = d.fileName,
-                Path = d.path,
-                Storage = _storageService.StorageName
-
+                FileName = r.fileName,
+                Path = r.pathOrContainerName,
+                Storage = _storageService.StorageName,
+                Cars = new List<Car>() {car }
             }).ToList());
+
             await _carWriteRepository.SaveAsync();
 
+            //var datas =await _storageService.UploadAsync("files", Request.Form.Files);
 
-            //Random r = new ();
-            //string uploadPath = Path.Combine(webHostEnvironment.WebRootPath, "resource/car-images"); //wwwroot/resource/car-images
 
-            //if(!Directory.Exists(uploadPath))
-            //    Directory.CreateDirectory(uploadPath);  
-            //foreach (IFormFile item in Request.Form.Files)
+            ////var datas = await _fileService.UploadAsync("resource/car-images", Request.Form.Files);
+
+            //await _carWriteRepository.AddRangeAsync(datas.Select(d => new CarImageFile()
             //{
-            //    string fullPath = Path.Combine(uploadPath, $"{r.Next() }{Path.GetExtension(item.FileName)}");
-            //    using FileStream fileStream = new(fullPath, FileMode.Create, FileAccess.Write, FileShare.None,1024*1024,useAsync: false);
-            //    await item.CopyToAsync(fileStream);
-            //    await fileStream.FlushAsync();
-            //}
+            //    FileName = d.fileName,
+            //    Path = d.path,
+            //    Storage = _storageService.StorageName
+
+            //}).ToList());
+            //await _carWriteRepository.SaveAsync();
+
+
+            ////Random r = new ();
+            ////string uploadPath = Path.Combine(webHostEnvironment.WebRootPath, "resource/car-images"); //wwwroot/resource/car-images
+
+            ////if(!Directory.Exists(uploadPath))
+            ////    Directory.CreateDirectory(uploadPath);  
+            ////foreach (IFormFile item in Request.Form.Files)
+            ////{
+            ////    string fullPath = Path.Combine(uploadPath, $"{r.Next() }{Path.GetExtension(item.FileName)}");
+            ////    using FileStream fileStream = new(fullPath, FileMode.Create, FileAccess.Write, FileShare.None,1024*1024,useAsync: false);
+            ////    await item.CopyToAsync(fileStream);
+            ////    await fileStream.FlushAsync();
+            ////}
 
             return Ok();
         }

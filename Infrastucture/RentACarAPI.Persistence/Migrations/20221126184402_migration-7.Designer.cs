@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RentACarAPI.Persistence.Contexts;
@@ -11,9 +12,11 @@ using RentACarAPI.Persistence.Contexts;
 namespace RentACarAPI.Persistence.Migrations
 {
     [DbContext(typeof(RentACarAPIDbContext))]
-    partial class RentACarAPIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221126184402_migration-7")]
+    partial class migration7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace RentACarAPI.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("CarCarImageFile", b =>
-                {
-                    b.Property<Guid>("CarImageFilesId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("CarsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("CarImageFilesId", "CarsId");
-
-                    b.HasIndex("CarsId");
-
-                    b.ToTable("CarCarImageFile");
-                });
 
             modelBuilder.Entity("CarOrder", b =>
                 {
@@ -168,6 +156,11 @@ namespace RentACarAPI.Persistence.Migrations
                 {
                     b.HasBaseType("RentACarAPI.Domain.Entities.File");
 
+                    b.Property<Guid>("CarId")
+                        .HasColumnType("uuid");
+
+                    b.HasIndex("CarId");
+
                     b.HasDiscriminator().HasValue("CarImageFile");
                 });
 
@@ -179,21 +172,6 @@ namespace RentACarAPI.Persistence.Migrations
                         .HasColumnType("numeric");
 
                     b.HasDiscriminator().HasValue("InvoiceFile");
-                });
-
-            modelBuilder.Entity("CarCarImageFile", b =>
-                {
-                    b.HasOne("RentACarAPI.Domain.Entities.CarImageFile", null)
-                        .WithMany()
-                        .HasForeignKey("CarImageFilesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RentACarAPI.Domain.Entities.Car", null)
-                        .WithMany()
-                        .HasForeignKey("CarsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("CarOrder", b =>
@@ -220,6 +198,22 @@ namespace RentACarAPI.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("RentACarAPI.Domain.Entities.CarImageFile", b =>
+                {
+                    b.HasOne("RentACarAPI.Domain.Entities.Car", "Car")
+                        .WithMany("CarImageFiles")
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+                });
+
+            modelBuilder.Entity("RentACarAPI.Domain.Entities.Car", b =>
+                {
+                    b.Navigation("CarImageFiles");
                 });
 
             modelBuilder.Entity("RentACarAPI.Domain.Entities.Customer", b =>

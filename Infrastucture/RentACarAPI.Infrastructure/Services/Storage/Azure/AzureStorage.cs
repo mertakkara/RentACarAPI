@@ -52,7 +52,7 @@ namespace RentACarAPI.Infrastructure.Services.Storage.Azure
                string fileNewName = await FileRenameAsync(pathOrContainer,item.Name,HasFile);
                BlobClient blobClient =   _blobContainerClient.GetBlobClient(fileNewName);
                await blobClient.UploadAsync(item.OpenReadStream());
-               datas.Add((fileNewName, pathOrContainer));
+               datas.Add((fileNewName, $"{pathOrContainer}/{fileNewName}"));
                 
 
             }
