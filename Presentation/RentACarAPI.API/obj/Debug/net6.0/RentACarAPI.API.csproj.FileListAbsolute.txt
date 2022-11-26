@@ -65,3 +65,9 @@ D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\n
 D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
 D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
 D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\RentACarAPI.API.staticwebassets.runtime.json
+D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\Azure.Core.dll
+D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\Azure.Storage.Common.dll
+D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\System.IO.Hashing.dll
+D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\System.Memory.Data.dll

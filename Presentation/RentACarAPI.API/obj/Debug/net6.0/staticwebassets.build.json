@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "v2niJOZBcFhS8SH1Igm5xYqwZc/jCdckIKaVDLggT1o=",
+  "Hash": "E5eNKvWvsY1FfD657VUT6p70P9NFIn0hCFRLeuamR9M=",
   "Source": "RentACarAPI.API",
   "BasePath": "_content/RentACarAPI.API",
   "Mode": "Default",
@@ -15,5 +15,23 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Presentation\\RentACarAPI.API\\wwwroot\\resource\\files\\1.png",
+      "SourceId": "RentACarAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Presentation\\RentACarAPI.API\\wwwroot\\",
+      "BasePath": "_content/RentACarAPI.API",
+      "RelativePath": "resource/files/1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resource\\files\\1.png"
+    }
+  ]
 }

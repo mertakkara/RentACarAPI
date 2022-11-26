@@ -2,6 +2,8 @@ using FluentValidation.AspNetCore;
 using RentACarAPI.Application.Validators.Cars;
 using RentACarAPI.Infrastructure;
 using RentACarAPI.Infrastructure.Filters;
+using RentACarAPI.Infrastructure.Services.Storage.Azure;
+using RentACarAPI.Infrastructure.Services.Storage.Local;
 using RentACarAPI.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+//builder.Services.AddStorage(StorageType.Azure);
+//builder.Services.AddStorage<LocalStorage>();
+builder.Services.AddStorage<AzureStorage>();
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
   policy.WithOrigins("http://localhost:4200","https://localhost:4200").AllowAnyHeader().AllowAnyMethod()
 ));

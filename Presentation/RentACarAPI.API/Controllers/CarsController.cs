@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentACarAPI.Application.Abstractions.Storage;
 using RentACarAPI.Application.Repositories;
 using RentACarAPI.Application.RequestParameters;
-using RentACarAPI.Application.Services;
+
 using RentACarAPI.Application.ViewModels.Cars;
 using RentACarAPI.Domain.Entities;
 using System.Net;
@@ -19,7 +20,7 @@ namespace RentACarAPI.API.Controllers
         private readonly IOrderWriteRepository _orderWriteService;
         private readonly ICustomerReadRepository _customerReadService;
         private readonly ICustomerWriteRepository _customerWriteervice;
-        private readonly IFileService _fileService;
+       // private readonly IFileService _fileService;
         private readonly IFileWriteRepository _fileWriteRepository;
         private readonly IFileReadRepository _fileReadRepository;
         
@@ -27,9 +28,10 @@ namespace RentACarAPI.API.Controllers
         private readonly ICarImageFileWriteRepository _carWriteRepository;
         private readonly IInvoiceFileReadRepository _invoiceReadRepository;
         private readonly IInvoiceFileWriteRepository _invoiceWriteRepository;
+        private readonly IStorageService _storageService;
 
 
-        public CarsController(IFileService fileService, IWebHostEnvironment webHostEnvironment, ICarWriteRepository carWriteService, ICarReadRepository carReadService, IOrderReadRepository orderReadService, IOrderWriteRepository orderWriteService, ICustomerReadRepository customerReadService, ICustomerWriteRepository customerWriteervice, IFileWriteRepository fileWriteRepository, IFileReadRepository fileReadRepository, ICarImageFileReadRepository carReadRepository, ICarImageFileWriteRepository carWriteRepository, IInvoiceFileReadRepository invoiceReadRepository, IInvoiceFileWriteRepository invoiceWriteRepository)
+        public CarsController(IWebHostEnvironment webHostEnvironment, ICarWriteRepository carWriteService, ICarReadRepository carReadService, IOrderReadRepository orderReadService, IOrderWriteRepository orderWriteService, ICustomerReadRepository customerReadService, ICustomerWriteRepository customerWriteervice, IFileWriteRepository fileWriteRepository, IFileReadRepository fileReadRepository, ICarImageFileReadRepository carReadRepository, ICarImageFileWriteRepository carWriteRepository, IInvoiceFileReadRepository invoiceReadRepository, IInvoiceFileWriteRepository invoiceWriteRepository, IStorageService storageService)
         {
             this.webHostEnvironment = webHostEnvironment;
             _carWriteService = carWriteService;
@@ -38,13 +40,14 @@ namespace RentACarAPI.API.Controllers
             _orderWriteService = orderWriteService;
             _customerReadService = customerReadService;
             _customerWriteervice = customerWriteervice;
-            _fileService = fileService;
+            //_fileService = fileService;
             _fileWriteRepository = fileWriteRepository;
             _fileReadRepository = fileReadRepository;
             _carReadRepository = carReadRepository;
             _carWriteRepository = carWriteRepository;
             _invoiceReadRepository = invoiceReadRepository;
             _invoiceWriteRepository = invoiceWriteRepository;
+            _storageService = storageService;
         }
 
         [HttpGet]
@@ -109,12 +112,17 @@ namespace RentACarAPI.API.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Upload()
         {
-            var datas = await _fileService.UploadAsync("resource/car-images", Request.Form.Files);
+
+            var datas =await _storageService.UploadAsync("files", Request.Form.Files);
+
+
+            //var datas = await _fileService.UploadAsync("resource/car-images", Request.Form.Files);
 
             await _carWriteRepository.AddRangeAsync(datas.Select(d => new CarImageFile()
             {
-                FileName = d.filename,
-                Path = d.path
+                FileName = d.fileName,
+                Path = d.path,
+                Storage = _storageService.StorageName
 
             }).ToList());
             await _carWriteRepository.SaveAsync();
