@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RentACarAPI.Application.Abstractions.Storage;
 using RentACarAPI.Application.Repositories;
 using RentACarAPI.Application.RequestParameters;
@@ -29,9 +30,10 @@ namespace RentACarAPI.API.Controllers
         private readonly IInvoiceFileReadRepository _invoiceReadRepository;
         private readonly IInvoiceFileWriteRepository _invoiceWriteRepository;
         private readonly IStorageService _storageService;
+        readonly IConfiguration configuration;
 
 
-        public CarsController(IWebHostEnvironment webHostEnvironment, ICarWriteRepository carWriteService, ICarReadRepository carReadService, IOrderReadRepository orderReadService, IOrderWriteRepository orderWriteService, ICustomerReadRepository customerReadService, ICustomerWriteRepository customerWriteervice, IFileWriteRepository fileWriteRepository, IFileReadRepository fileReadRepository, ICarImageFileReadRepository carReadRepository, ICarImageFileWriteRepository carWriteRepository, IInvoiceFileReadRepository invoiceReadRepository, IInvoiceFileWriteRepository invoiceWriteRepository, IStorageService storageService)
+        public CarsController(IWebHostEnvironment webHostEnvironment, ICarWriteRepository carWriteService, ICarReadRepository carReadService, IOrderReadRepository orderReadService, IOrderWriteRepository orderWriteService, ICustomerReadRepository customerReadService, ICustomerWriteRepository customerWriteervice, IFileWriteRepository fileWriteRepository, IFileReadRepository fileReadRepository, ICarImageFileReadRepository carReadRepository, ICarImageFileWriteRepository carWriteRepository, IInvoiceFileReadRepository invoiceReadRepository, IInvoiceFileWriteRepository invoiceWriteRepository, IStorageService storageService, IConfiguration configuration)
         {
             this.webHostEnvironment = webHostEnvironment;
             _carWriteService = carWriteService;
@@ -48,6 +50,7 @@ namespace RentACarAPI.API.Controllers
             _invoiceReadRepository = invoiceReadRepository;
             _invoiceWriteRepository = invoiceWriteRepository;
             _storageService = storageService;
+            this.configuration = configuration;
         }
 
         [HttpGet]
@@ -166,5 +169,35 @@ namespace RentACarAPI.API.Controllers
 
             return Ok();
         }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetImages(string id)
+        {
+            try
+            {
+                Car? car = await _carReadService.Table.Include(c => c.CarImageFiles).FirstOrDefaultAsync(c => c.Id == Guid.Parse(id));
+                return Ok(car.CarImageFiles.Select(c => new
+                {
+                    Path = $"{configuration["BaseStorageUrl"]}/{c.Path}",
+                    c.FileName,
+                    c.Id
+                })) ;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);  
+            }
+           
+        
+        }
+        //[HttpGet("[action]/{id}")]
+        //public async Task<IActionResult> DeleteCarImage(string id,string imageId)
+        //{
+        //    Car? car = await _carReadService.Table.Include(c => c.CarImageFiles).FirstOrDefaultAsync(c => c.Id == Guid.Parse(id));
+        //   CarImageFile carImageFile =  car.CarImageFiles.FirstOrDefault(c => c.Id == Guid.Parse(imageId));
+        //    car.CarImageFiles.Remove(carImageFile);
+        //   await _carWriteRepository.SaveAsync();
+        //    return Ok();
+        //}
     }
 }
