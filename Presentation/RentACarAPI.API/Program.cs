@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using RentACarAPI.Application;
 using RentACarAPI.Application.Validators.Cars;
 using RentACarAPI.Infrastructure;
 using RentACarAPI.Infrastructure.Filters;
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddApplicationServices();
 //builder.Services.AddStorage(StorageType.Azure);
 //builder.Services.AddStorage<LocalStorage>();
 builder.Services.AddStorage<AzureStorage>();

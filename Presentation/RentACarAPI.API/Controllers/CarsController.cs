@@ -1,8 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentACarAPI.Application.Abstractions.Storage;
+using RentACarAPI.Application.Features.Commands.Car.CreateCar;
+using RentACarAPI.Application.Features.Commands.Car.DeleteCar;
+using RentACarAPI.Application.Features.Commands.Car.UpdateCar;
+using RentACarAPI.Application.Features.Commands.CarImageFile.RemoveCarImage;
+using RentACarAPI.Application.Features.Commands.CarImageFile.UploadCarImage;
+using RentACarAPI.Application.Features.Queries.Car.GetAllCar;
+using RentACarAPI.Application.Features.Queries.Car.GetByIdCar;
+using RentACarAPI.Application.Features.Queries.CarImageFile.GetCarImages;
 using RentACarAPI.Application.Repositories;
-using RentACarAPI.Application.RequestParameters;
 
 using RentACarAPI.Application.ViewModels.Cars;
 using RentACarAPI.Domain.Entities;
@@ -14,190 +22,68 @@ namespace RentACarAPI.API.Controllers
     [ApiController]
     public class CarsController : Controller
     {
-        private readonly IWebHostEnvironment webHostEnvironment;
-        private readonly ICarWriteRepository _carWriteService;
-        private readonly ICarReadRepository _carReadService;
-        private readonly IOrderReadRepository _orderReadService;
-        private readonly IOrderWriteRepository _orderWriteService;
-        private readonly ICustomerReadRepository _customerReadService;
-        private readonly ICustomerWriteRepository _customerWriteervice;
-       // private readonly IFileService _fileService;
-        private readonly IFileWriteRepository _fileWriteRepository;
-        private readonly IFileReadRepository _fileReadRepository;
-        
-        private readonly ICarImageFileReadRepository _carReadRepository;
-        private readonly ICarImageFileWriteRepository _carWriteRepository;
-        private readonly IInvoiceFileReadRepository _invoiceReadRepository;
-        private readonly IInvoiceFileWriteRepository _invoiceWriteRepository;
-        private readonly IStorageService _storageService;
-        readonly IConfiguration configuration;
-
-
-        public CarsController(IWebHostEnvironment webHostEnvironment, ICarWriteRepository carWriteService, ICarReadRepository carReadService, IOrderReadRepository orderReadService, IOrderWriteRepository orderWriteService, ICustomerReadRepository customerReadService, ICustomerWriteRepository customerWriteervice, IFileWriteRepository fileWriteRepository, IFileReadRepository fileReadRepository, ICarImageFileReadRepository carReadRepository, ICarImageFileWriteRepository carWriteRepository, IInvoiceFileReadRepository invoiceReadRepository, IInvoiceFileWriteRepository invoiceWriteRepository, IStorageService storageService, IConfiguration configuration)
+        readonly IMediator _mediator;
+        public CarsController(IMediator mediator)
         {
-            this.webHostEnvironment = webHostEnvironment;
-            _carWriteService = carWriteService;
-            _carReadService = carReadService;
-            _orderReadService = orderReadService;
-            _orderWriteService = orderWriteService;
-            _customerReadService = customerReadService;
-            _customerWriteervice = customerWriteervice;
-            //_fileService = fileService;
-            _fileWriteRepository = fileWriteRepository;
-            _fileReadRepository = fileReadRepository;
-            _carReadRepository = carReadRepository;
-            _carWriteRepository = carWriteRepository;
-            _invoiceReadRepository = invoiceReadRepository;
-            _invoiceWriteRepository = invoiceWriteRepository;
-            _storageService = storageService;
-            this.configuration = configuration;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] Pagination pagination)
+        public async Task<IActionResult> Get([FromQuery] GetAllCarQueryRequest getAllCarQueryRequest)
         {
-            var totalCount = _carReadService.GetAll(false).Count(); 
-             var cars = _carReadService.GetAll(false).Skip(pagination.Page * pagination.Size).Take(pagination.Size).Select(p => new
-            {
-                p.Id,
-                p.Name,
-                p.Stock,
-                p.Price,
-                p.CreatedDateTime, 
-                p.UpdatedDate
-            }
-            );
-
-            return Ok(new
-            {
-                totalCount,
-                cars
-            });
-
-
-
+            GetAllCarQueryResponse getAllCarQueryResponse =  await _mediator.Send(getAllCarQueryRequest);
+            return Ok(getAllCarQueryResponse);
         }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        [HttpGet("[action]")]
+        public async Task<IActionResult> Get([FromQuery] GetByIdCarQueryRequest model)
         {
-            return Ok(await _carReadService.GetByIdAsync(id, false));
+            GetByIdCarQueryResponse getByIdCarQueryResponse = await _mediator.Send(model);
+            return Ok(getByIdCarQueryResponse);
+         
         }
         [HttpPost]
-        public async Task<IActionResult> Post(VM_Create_Car model)
+        public async Task<IActionResult> Post(CreateCarCommandRequest createCarCommandRequest)
         {
-            await _carWriteService.AddAsync(new()
-            {
-                Name = model.Name,
-                Price = model.Price,
-                Stock = model.Stock,
-
-            });
-            await _carWriteService.SaveAsync();
+            CreateCarCommandResponse response = await _mediator.Send(createCarCommandRequest);
             return StatusCode((int)HttpStatusCode.Created);
         }
         [HttpPut]
-        public async Task<IActionResult> Put(VM_Update_Car model)
+        public async Task<IActionResult> Put([FromBody] UpdateCarCommandRequest model)
         {
-            Car car = await _carReadService.GetByIdAsync(model.Id);
-            car.Stock = model.Stock;
-            car.Name = model.Name;
-            car.Price = model.Price;
-            await _carWriteService.SaveAsync();
+            UpdateCarCommandResponse response = await _mediator.Send(model);
             return Ok();
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] DeleteCarCommandRequest deleteCarCommandRequest)
         {
-            await _carWriteService.RemoveAsync(id);
-            await _carWriteService.SaveAsync();
+            DeleteCarCommandResponse response = await _mediator.Send(deleteCarCommandRequest);
             return Ok();
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload(string id)
+        public async Task<IActionResult> Upload([FromQuery] UploadCarImageCommandRequest uploadCarImageCommandRequest)
         {
-            List<(string fileName,string pathOrContainerName)> result = await _storageService.UploadAsync("photo-images", Request.Form.Files);
-
-            Car car = await  _carReadService.GetByIdAsync(id);
-
-            //foreach (var item in result)
-            //{
-            //    car.CarImageFiles.Add(new(){
-            //        FileName = r.fileName,
-            //        Path = r.pathOrContainerName,
-            //        Storage = _storageService.StorageName,
-            //        Cars = new List<Car>() { car }
-            //    });
-            //}
-
-            await _carWriteRepository.AddRangeAsync(result.Select(r =>new CarImageFile
-            {
-                FileName = r.fileName,
-                Path = r.pathOrContainerName,
-                Storage = _storageService.StorageName,
-                Cars = new List<Car>() {car }
-            }).ToList());
-
-            await _carWriteRepository.SaveAsync();
-
-            //var datas =await _storageService.UploadAsync("files", Request.Form.Files);
-
-
-            ////var datas = await _fileService.UploadAsync("resource/car-images", Request.Form.Files);
-
-            //await _carWriteRepository.AddRangeAsync(datas.Select(d => new CarImageFile()
-            //{
-            //    FileName = d.fileName,
-            //    Path = d.path,
-            //    Storage = _storageService.StorageName
-
-            //}).ToList());
-            //await _carWriteRepository.SaveAsync();
-
-
-            ////Random r = new ();
-            ////string uploadPath = Path.Combine(webHostEnvironment.WebRootPath, "resource/car-images"); //wwwroot/resource/car-images
-
-            ////if(!Directory.Exists(uploadPath))
-            ////    Directory.CreateDirectory(uploadPath);  
-            ////foreach (IFormFile item in Request.Form.Files)
-            ////{
-            ////    string fullPath = Path.Combine(uploadPath, $"{r.Next() }{Path.GetExtension(item.FileName)}");
-            ////    using FileStream fileStream = new(fullPath, FileMode.Create, FileAccess.Write, FileShare.None,1024*1024,useAsync: false);
-            ////    await item.CopyToAsync(fileStream);
-            ////    await fileStream.FlushAsync();
-            ////}
-
+            uploadCarImageCommandRequest.Files = Request.Form.Files;
+            UploadCarImageCommandResponse response = await _mediator.Send(uploadCarImageCommandRequest);
             return Ok();
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetImages(string id)
+        public async Task<IActionResult> GetImages([FromQuery]  GetCarImagesQueryRequest getCarImagesQueryRequest)
         {
-            try
-            {
-                Car? car = await _carReadService.Table.Include(c => c.CarImageFiles).FirstOrDefaultAsync(c => c.Id == Guid.Parse(id));
-                return Ok(car.CarImageFiles.Select(c => new
-                {
-                    Path = $"{configuration["BaseStorageUrl"]}/{c.Path}",
-                    c.FileName,
-                    c.Id
-                })) ;
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);  
-            }
+
+            List<GetCarImagesQueryResponse> response = await _mediator.Send(getCarImagesQueryRequest);
+
+            return Ok(response);  
+            
            
         
+        } 
+        [HttpGet("[action]/{Id}")]
+        public async Task<IActionResult> DeleteCarImage([ FromRoute] RemoveCarImageCommandRequest removeCarImageCommandRequest,[FromQuery] string imageId)
+        {
+            removeCarImageCommandRequest.ImageId = imageId;
+                RemoveCarImageCommandResponse response = await _mediator.Send(removeCarImageCommandRequest);
+            return Ok();
         }
-        //[HttpGet("[action]/{id}")]
-        //public async Task<IActionResult> DeleteCarImage(string id,string imageId)
-        //{
-        //    Car? car = await _carReadService.Table.Include(c => c.CarImageFiles).FirstOrDefaultAsync(c => c.Id == Guid.Parse(id));
-        //   CarImageFile carImageFile =  car.CarImageFiles.FirstOrDefault(c => c.Id == Guid.Parse(imageId));
-        //    car.CarImageFiles.Remove(carImageFile);
-        //   await _carWriteRepository.SaveAsync();
-        //    return Ok();
-        //}
     }
 }
