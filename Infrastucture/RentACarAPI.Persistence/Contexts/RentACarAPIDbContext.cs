@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RentACarAPI.Domain.Entities;
 using RentACarAPI.Domain.Entities.Common;
+using RentACarAPI.Domain.Entities.Common.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +13,7 @@ using File = RentACarAPI.Domain.Entities.File;
 
 namespace RentACarAPI.Persistence.Contexts
 {
-    public class RentACarAPIDbContext : DbContext
+    public class RentACarAPIDbContext : IdentityDbContext<AppUser,AppRole,string>
     {
         public RentACarAPIDbContext(DbContextOptions options) : base(options)
         {

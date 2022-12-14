@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RentACarAPI.Application.Repositories;
+using RentACarAPI.Domain.Entities.Common.Identity;
 using RentACarAPI.Persistence.Contexts;
 using RentACarAPI.Persistence.Repositories;
 using System;
@@ -21,6 +22,15 @@ namespace RentACarAPI.Persistence
             configurationManager.AddJsonFile("appsettings.json");
 
             services.AddDbContext<RentACarAPIDbContext>(options => options.UseNpgsql(configurationManager.GetConnectionString("PostgreSQL")));
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;    
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                
+            }).AddEntityFrameworkStores<RentACarAPIDbContext>();
             services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
             services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
             services.AddScoped<IOrderReadRepository, OrderReadRepository>();
