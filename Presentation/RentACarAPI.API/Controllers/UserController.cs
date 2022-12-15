@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RentACarAPI.Application.Features.Commands.AppUser.CreateUser;
+using RentACarAPI.Application.Features.Commands.AppUser.LoginUser;
 
 namespace RentACarAPI.API.Controllers
 {
@@ -19,6 +20,13 @@ namespace RentACarAPI.API.Controllers
         {
             CreateUserCommandResponse response =  await _mediator.Send(createUserCommandRequest);
             return Ok(response);
+        }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Login(LoginUserCommandRequest loginUserCommandRequest)
+        {
+            LoginUserCommandResponse response = await _mediator.Send(loginUserCommandRequest);
+            return Ok(response);
+
         }
     }
 }
