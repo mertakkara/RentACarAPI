@@ -1,11 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RentACarAPI.Application.Abstractions.Storage;
+using RentACarAPI.Application.Abstractions.Token;
 using RentACarAPI.Infrastructure.Enums;
 using RentACarAPI.Infrastructure.Services;
 using RentACarAPI.Infrastructure.Services.Storage;
 using RentACarAPI.Infrastructure.Services.Storage.Azure;
 using RentACarAPI.Infrastructure.Services.Storage.Local;
+using RentACarAPI.Infrastructure.Services.Token;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,7 @@ namespace RentACarAPI.Infrastructure
 
             
             services.AddScoped<IStorageService,StorageService>();
+            services.AddScoped<ITokenHandler,TokenHandler>();
 
         }
         public static void AddStorage<T>(this IServiceCollection services) where T : Storage,IStorage // alttaki yerine bunu tercih ediyoruz

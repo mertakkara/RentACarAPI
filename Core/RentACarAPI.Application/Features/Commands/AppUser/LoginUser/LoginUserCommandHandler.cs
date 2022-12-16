@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
+using RentACarAPI.Application.Abstractions.Token;
+using RentACarAPI.Application.DTOs;
 using RentACarAPI.Application.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -13,11 +15,13 @@ namespace RentACarAPI.Application.Features.Commands.AppUser.LoginUser
     {
         readonly UserManager<Domain.Entities.Common.Identity.AppUser> _userManager;
         readonly SignInManager<Domain.Entities.Common.Identity.AppUser> _signInManager;
+        readonly ITokenHandler _tokenHandler;
 
-        public LoginUserCommandHandler(SignInManager<Domain.Entities.Common.Identity.AppUser> signInManager, UserManager<Domain.Entities.Common.Identity.AppUser> userManager)
+        public LoginUserCommandHandler(SignInManager<Domain.Entities.Common.Identity.AppUser> signInManager, UserManager<Domain.Entities.Common.Identity.AppUser> userManager, ITokenHandler tokenHandler)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _tokenHandler = tokenHandler;
         }
 
         public async Task<LoginUserCommandResponse> Handle(LoginUserCommandRequest request, CancellationToken cancellationToken)
@@ -30,11 +34,17 @@ namespace RentACarAPI.Application.Features.Commands.AppUser.LoginUser
           SignInResult result =  await _signInManager.CheckPasswordSignInAsync(user,request.Password,false);
             if (result.Succeeded)
             {
-               
+                Token token = _tokenHandler.CreateAccessToken(5);
+                return new LoginUserSuccessCommandResponse()
+                {
+                    Token = token
+                };
             }
-               
-
-            return new();
+            throw new AuthenticationErrorException();
+            //return new LoginUserErrorCommandResponse()
+            //{
+            //    Message = "Username Or Password is Wrong"
+            //};
         }
     }
 }
