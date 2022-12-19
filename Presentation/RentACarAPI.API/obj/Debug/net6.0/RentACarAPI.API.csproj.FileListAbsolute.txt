@@ -92,3 +92,4 @@ D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\n
 D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\Google.Apis.Auth.dll
 D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\Google.Apis.Core.dll
 D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Users\merta\source\repos\RentACarAPI\Presentation\RentACarAPI.API\bin\Debug\net6.0\Microsoft.Extensions.Http.dll

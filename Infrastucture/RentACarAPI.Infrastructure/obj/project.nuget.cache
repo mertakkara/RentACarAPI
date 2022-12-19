@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HyYRqKZWxhP+8crzUVkJSmSx53i9JDq/vqmrdSvwFJntdcvIuLRGRVq3FtIO47erh3wzF3ZJ8xftCgrdLZn6YQ==",
+  "dgSpecHash": "UlpHj+zts3JPWRb/qXr4mmaYXX0q8OHEU6D2e/A7dKgpVcOhU+o9wq86nDpJ+Z9l34+PekY5yMy0BsUPAH2zrw==",
   "success": true,
   "projectFilePath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Infrastucture\\RentACarAPI.Infrastructure\\RentACarAPI.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "C:\\Users\\merta\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\2.2.0\\microsoft.extensions.fileproviders.physical.2.2.0.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\2.2.0\\microsoft.extensions.filesystemglobbing.2.2.0.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\2.2.0\\microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\merta\\.nuget\\packages\\microsoft.extensions.http\\7.0.0\\microsoft.extensions.http.7.0.0.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\microsoft.extensions.identity.core\\6.0.5\\microsoft.extensions.identity.core.6.0.5.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\microsoft.extensions.identity.stores\\6.0.5\\microsoft.extensions.identity.stores.6.0.5.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
