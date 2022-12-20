@@ -1,10 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RentACarAPI.Application.Abstractions.Services;
+using RentACarAPI.Application.Abstractions.Services.Authentication;
 using RentACarAPI.Application.Repositories;
 using RentACarAPI.Domain.Entities.Common.Identity;
 using RentACarAPI.Persistence.Contexts;
 using RentACarAPI.Persistence.Repositories;
+using RentACarAPI.Persistence.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +46,11 @@ namespace RentACarAPI.Persistence
             services.AddScoped<IInvoiceFileWriteRepository,InvoiceFileWriteRepository>();
             services.AddScoped<ICarImageFileReadRepository, ReadCarImageReadRepository>();
             services.AddScoped<ICarImageFileWriteRepository,CarImageFileWriteRepository>();
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IExternalAuthentication, AuthService>();
+            services.AddScoped<IInternalAuthentication, AuthService>();
 
         }
     }
