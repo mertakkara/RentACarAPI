@@ -1015,7 +1015,6 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "FluentValidation": "11.3.0",
-          "Google.Apis.Auth": "1.58.0",
           "MediatR": "11.1.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -2729,6 +2728,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Google.Apis.Auth >= 1.58.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.5",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
@@ -2781,6 +2781,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Google.Apis.Auth": {
+            "target": "Package",
+            "version": "[1.58.0, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.5, )"

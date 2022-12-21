@@ -1,6 +1,7 @@
-﻿using Google.Apis.Http;
+﻿
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using RentACarAPI.Application.Abstractions.Services;
 using RentACarAPI.Application.Abstractions.Token;
 using RentACarAPI.Application.DTOs.Facebook;
 using System;
@@ -14,22 +15,20 @@ namespace RentACarAPI.Application.Features.Commands.AppUser.FacebookLogin
 {
     public class FacebookLoginCommandHandler : IRequestHandler<FacebookLoginCommandRequest, FacebookLoginCommandResponse>
     {
-        readonly UserManager<Domain.Entities.Common.Identity.AppUser> _userManager;
-        readonly ITokenHandler _tokenHandler;
-        readonly HttpClient _httpClient;
+        readonly IAuthService _authService;
 
-        public FacebookLoginCommandHandler(System.Net.Http.IHttpClientFactory httpClientFactory, ITokenHandler tokenHandler, UserManager<Domain.Entities.Common.Identity.AppUser> userManager)
+        public FacebookLoginCommandHandler(IAuthService authService)
         {
-            _httpClient = httpClientFactory.CreateClient();
-            _tokenHandler = tokenHandler;
-            _userManager = userManager;
+            _authService = authService;
         }
 
         public async Task<FacebookLoginCommandResponse> Handle(FacebookLoginCommandRequest request, CancellationToken cancellationToken)
         {
-           
-           
-
+            var token = await _authService.FacebookLoginAsync(request.AuthToken,15);
+            return new()
+            {
+                Token = token
+            };
         }
     }
 }

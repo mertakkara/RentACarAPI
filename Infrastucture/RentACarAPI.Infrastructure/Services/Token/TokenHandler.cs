@@ -19,12 +19,12 @@ namespace RentACarAPI.Infrastructure.Services.Token
             _configuration = configuration;
         }
 
-        public Application.DTOs.Token CreateAccessToken(int minute)
+        public Application.DTOs.Token CreateAccessToken(int second)
         {
             Application.DTOs.Token token = new();
             SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(_configuration["Token:SecurityKey"]));
             SigningCredentials signingCredentials = new(securityKey, SecurityAlgorithms.HmacSha256);
-            token.Expiration = DateTime.UtcNow.AddMinutes(minute);
+            token.Expiration = DateTime.UtcNow.AddMinutes(second);
             JwtSecurityToken securityToken = new(
                 audience: _configuration["Token:Audience"],
                 issuer: _configuration["Token:Issuer"],

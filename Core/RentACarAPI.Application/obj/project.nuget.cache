@@ -1,13 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "sc26pSp3kv/CAEoVYqlP+KZBR4ELrywRhXLbLcc5sVQCP7UkV5RpXZdB23CQdpjBo7M8LmEP8uGZom/48zzFTA==",
+  "dgSpecHash": "aV+b78tyF72D5LQUiVGB58b8G4FIjjP3Z7sy5nlepzzEl52Asi6H1pTSY6yTuM4SAAq1k4NXL40V/TBdc8WCXA==",
   "success": true,
   "projectFilePath": "D:\\Users\\merta\\source\\repos\\RentACarAPI\\Core\\RentACarAPI.Application\\RentACarAPI.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\merta\\.nuget\\packages\\fluentvalidation\\11.3.0\\fluentvalidation.11.3.0.nupkg.sha512",
-    "C:\\Users\\merta\\.nuget\\packages\\google.apis\\1.58.0\\google.apis.1.58.0.nupkg.sha512",
-    "C:\\Users\\merta\\.nuget\\packages\\google.apis.auth\\1.58.0\\google.apis.auth.1.58.0.nupkg.sha512",
-    "C:\\Users\\merta\\.nuget\\packages\\google.apis.core\\1.58.0\\google.apis.core.1.58.0.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.0.0\\mediatr.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
@@ -51,7 +48,6 @@
     "C:\\Users\\merta\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
-    "C:\\Users\\merta\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
     "C:\\Users\\merta\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",

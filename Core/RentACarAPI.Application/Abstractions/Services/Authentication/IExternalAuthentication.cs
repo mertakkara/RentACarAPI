@@ -8,7 +8,7 @@ namespace RentACarAPI.Application.Abstractions.Services.Authentication
 {
     public interface IExternalAuthentication
     {
-        Task<DTOs.Token> FacebookLoginAsync(string authToken);
-        Task<DTOs.Token> GoogleLoginAsync(string idToken);
+        Task<DTOs.Token> FacebookLoginAsync(string authToken, int accessTokenLifetime );
+        Task<DTOs.Token> GoogleLoginAsync(string idToken, int accessTokenLifetime);
     }
 }
