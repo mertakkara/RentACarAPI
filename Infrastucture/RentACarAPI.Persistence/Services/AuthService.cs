@@ -23,14 +23,16 @@ namespace RentACarAPI.Persistence.Services
         readonly HttpClient _httpClient;
         readonly IConfiguration _configuration;
         readonly SignInManager<Domain.Entities.Common.Identity.AppUser> _signInManager;
+        readonly IUserService _userService;
 
-        public AuthService(System.Net.Http.IHttpClientFactory httpClientFactory, ITokenHandler tokenHandler, UserManager<Domain.Entities.Common.Identity.AppUser> userManager, IConfiguration configuration, SignInManager<AppUser> signInManager)
+        public AuthService(System.Net.Http.IHttpClientFactory httpClientFactory, ITokenHandler tokenHandler, UserManager<Domain.Entities.Common.Identity.AppUser> userManager, IConfiguration configuration, SignInManager<AppUser> signInManager, IUserService userService)
         {
             _httpClient = httpClientFactory.CreateClient();
             _tokenHandler = tokenHandler;
             _userManager = userManager;
             _configuration = configuration;
             _signInManager = signInManager;
+            _userService = userService;
         }
         public async Task<Token> FacebookLoginAsync(string authToken, int accessTokenLifetime)
         {
@@ -74,6 +76,7 @@ namespace RentACarAPI.Persistence.Services
             {
                 await _userManager.AddLoginAsync(user, info);
                 Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime);
+                await _userService.UpdateRefreshToken(token.RefreshToken,user,token.Expiration,5);
                 return token;
             }
             throw new Exception("Invalid authentication");
@@ -105,6 +108,7 @@ namespace RentACarAPI.Persistence.Services
             if (result.Succeeded)
             {
                 Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime);
+                await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration, 5);
                 return token;
             }
             throw new AuthenticationErrorException();

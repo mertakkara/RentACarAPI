@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using RentACarAPI.Application.Abstractions.Services;
 using RentACarAPI.Application.DTOs.User;
+using RentACarAPI.Application.Exceptions;
+using RentACarAPI.Domain.Entities.Common.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +40,17 @@ namespace RentACarAPI.Persistence.Services
                 foreach (var item in result.Errors)
                     createUserCommandResponse.Message += $"{item.Code} - {item.Description}\n";
             return createUserCommandResponse;
+        }
+
+        public async Task UpdateRefreshToken(string refreshToken, AppUser user, DateTime accessTpkeLifeTime,int refreshTokenLifeTime)
+        {
+            if(user != null)
+            {
+                user.RefreshToken = refreshToken;   
+                user.RefreshTokenLifeTime = accessTpkeLifeTime.AddSeconds(refreshTokenLifeTime);
+                await _userManager.UpdateAsync(user);
+            }
+            throw new NotFoundUserException();
         }
     }
 }
