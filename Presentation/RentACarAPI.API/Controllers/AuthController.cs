@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RentACarAPI.Application.Features.Commands.AppUser.FacebookLogin;
 using RentACarAPI.Application.Features.Commands.AppUser.GoogleLogin;
 using RentACarAPI.Application.Features.Commands.AppUser.LoginUser;
+using RentACarAPI.Application.Features.Commands.AppUser.RefreshTokenLogin;
 
 namespace RentACarAPI.API.Controllers
 {
@@ -21,6 +22,12 @@ namespace RentACarAPI.API.Controllers
         public async Task<IActionResult> Login(LoginUserCommandRequest loginUserCommandRequest)
         {
             LoginUserCommandResponse response = await _mediator.Send(loginUserCommandRequest);
+            return Ok(response);
+        }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> RefreshTokenLogin([FromBody]RefreshTokenLoginCommandRequest refreshTokenLoginCommandRequest)
+        {
+            RefreshTokenLoginCommandResponse response = await _mediator.Send(refreshTokenLoginCommandRequest);
             return Ok(response);
         }
         [HttpPost("google-login")]

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RentACarAPI.Persistence.Contexts;
@@ -11,9 +12,11 @@ using RentACarAPI.Persistence.Contexts;
 namespace RentACarAPI.Persistence.Migrations
 {
     [DbContext(typeof(RentACarAPIDbContext))]
-    partial class RentACarAPIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221223192526_migration-12")]
+    partial class migration12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -50,7 +50,8 @@ namespace RentACarAPI.Persistence.Services
                 user.RefreshTokenLifeTime = accessTpkeLifeTime.AddSeconds(refreshTokenLifeTime);
                 await _userManager.UpdateAsync(user);
             }
-            throw new NotFoundUserException();
+            else
+                throw new NotFoundUserException();
         }
     }
 }

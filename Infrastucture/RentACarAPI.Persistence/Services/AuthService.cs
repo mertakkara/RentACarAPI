@@ -76,7 +76,7 @@ namespace RentACarAPI.Persistence.Services
             {
                 await _userManager.AddLoginAsync(user, info);
                 Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime);
-                await _userService.UpdateRefreshToken(token.RefreshToken,user,token.Expiration,5);
+                await _userService.UpdateRefreshToken(token.RefreshToken,user,token.Expiration,15);
                 return token;
             }
             throw new Exception("Invalid authentication");
@@ -108,7 +108,7 @@ namespace RentACarAPI.Persistence.Services
             if (result.Succeeded)
             {
                 Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime);
-                await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration, 5);
+                await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration, 15);
                 return token;
             }
             throw new AuthenticationErrorException();
@@ -116,6 +116,19 @@ namespace RentACarAPI.Persistence.Services
             //{
             //    Message = "Username Or Password is Wrong"
             //};
+        }
+
+        public async Task<Token> RefreshTokenLoginAsync(string refreshToken)
+        {
+            AppUser? user = _userManager.Users.FirstOrDefault(u => u.RefreshToken == refreshToken);
+            if(user != null  && user?.RefreshTokenLifeTime > DateTime.UtcNow)
+            {
+                Token token = _tokenHandler.CreateAccessToken(15);
+                await _userService.UpdateRefreshToken(token.RefreshToken,user,token.Expiration,15);
+                return token;
+            }
+            else
+            throw new NotFoundUserException();
         }
     }
 }
