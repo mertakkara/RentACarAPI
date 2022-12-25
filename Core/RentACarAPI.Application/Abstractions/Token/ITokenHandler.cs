@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentACarAPI.Domain.Entities.Common.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace RentACarAPI.Application.Abstractions.Token
 {
     public interface ITokenHandler
     {
-        DTOs.Token CreateAccessToken(int second);
+        DTOs.Token CreateAccessToken(int second, AppUser user);
         string CreateRefreshToken();
     }
 }

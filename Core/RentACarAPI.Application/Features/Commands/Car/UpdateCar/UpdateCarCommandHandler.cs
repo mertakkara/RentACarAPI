@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using RentACarAPI.Application.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,13 @@ namespace RentACarAPI.Application.Features.Commands.Car.UpdateCar
     {
         readonly ICarReadRepository carReadRepository;
         readonly ICarWriteRepository carWriteRepository;
+        readonly ILogger<UpdateCarCommandHandler> _logger;
 
-        public UpdateCarCommandHandler(ICarWriteRepository carWriteRepository, ICarReadRepository carReadRepository)
+        public UpdateCarCommandHandler(ICarWriteRepository carWriteRepository, ICarReadRepository carReadRepository, ILogger<UpdateCarCommandHandler> logger)
         {
             this.carWriteRepository = carWriteRepository;
             this.carReadRepository = carReadRepository;
+            _logger = logger;
         }
 
         public async Task<UpdateCarCommandResponse> Handle(UpdateCarCommandRequest request, CancellationToken cancellationToken)
@@ -26,6 +29,7 @@ namespace RentACarAPI.Application.Features.Commands.Car.UpdateCar
             car.Name = request.Name;
             car.Price = request.Price;
             await carWriteRepository.SaveAsync();
+            _logger.LogInformation("Car Updated");
             return new();
         }
     }

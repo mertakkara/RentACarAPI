@@ -75,7 +75,7 @@ namespace RentACarAPI.Persistence.Services
             if (result)
             {
                 await _userManager.AddLoginAsync(user, info);
-                Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime);
+                Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime,user);
                 await _userService.UpdateRefreshToken(token.RefreshToken,user,token.Expiration,15);
                 return token;
             }
@@ -107,7 +107,7 @@ namespace RentACarAPI.Persistence.Services
             SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
             if (result.Succeeded)
             {
-                Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime);
+                Token token = _tokenHandler.CreateAccessToken(accessTokenLifetime,user);
                 await _userService.UpdateRefreshToken(token.RefreshToken, user, token.Expiration, 15);
                 return token;
             }
@@ -123,7 +123,7 @@ namespace RentACarAPI.Persistence.Services
             AppUser? user = _userManager.Users.FirstOrDefault(u => u.RefreshToken == refreshToken);
             if(user != null  && user?.RefreshTokenLifeTime > DateTime.UtcNow)
             {
-                Token token = _tokenHandler.CreateAccessToken(15);
+                Token token = _tokenHandler.CreateAccessToken(15,user);
                 await _userService.UpdateRefreshToken(token.RefreshToken,user,token.Expiration,15);
                 return token;
             }
